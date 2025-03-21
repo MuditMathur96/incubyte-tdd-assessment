@@ -18,7 +18,11 @@ describe("Test sum function",()=>{
 
     test("test with line break separated string",()=>{
         expect(obj.sum("1/n2,3")).toBe(6);
-    })
+    });
+
+    test("test with configurable delimiter",()=>{
+        expect(obj.sum("//;\n1;2" )).toBe(3);
+    });
 
    
 })

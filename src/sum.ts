@@ -1,6 +1,27 @@
 export default class Sum{
     constructor(){};
 
+    checkForNegative(input:number[]){
+        let message = "negative numbers not allowed ";
+        let hasNegNum = false;
+        input.forEach((num)=>{
+            if(num<0){
+                if(hasNegNum) {
+                    message = message.concat(",",""+num)
+                }else{
+                    hasNegNum =true;
+                    message = message.concat(num+"");
+                }
+                
+            };
+            
+
+        });
+
+        console.log(message);
+        if(hasNegNum) throw new Error(message);
+    }
+
     senatizeInput(input:string){
         
         let str:String=""
@@ -19,9 +40,11 @@ export default class Sum{
         .map((s)=>Number(s));
     }
 
-    sum(input:string){
+    add(input:string){
         
         const arr = this.senatizeInput(input);
+
+        this.checkForNegative(arr);
 
         return arr.reduce((acc,num)=>acc+num,0);
 

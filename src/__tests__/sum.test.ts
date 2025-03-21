@@ -31,5 +31,11 @@ describe("Test sum function",()=>{
       
     });
 
+    test("test with number more than 1000",()=>{
+       
+        expect(obj.add("2,1001")).toBe(2);
+      
+    });
+
    
 })

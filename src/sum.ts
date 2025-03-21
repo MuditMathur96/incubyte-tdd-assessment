@@ -46,7 +46,7 @@ export default class Sum{
 
         this.checkForNegative(arr);
 
-        return arr.reduce((acc,num)=>acc+num,0);
+        return arr.reduce((acc,num)=>num<=1000?acc+num:acc,0);
 
     }
 

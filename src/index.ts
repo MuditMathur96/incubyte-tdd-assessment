@@ -6,4 +6,4 @@ export default function sayHello(){
 }
 
 console.log(sayHello());
-console.log(new Sum().add("//;\n1;2"));
+console.log(new Sum().add("//[**][;]\n1**2**4;-6"));

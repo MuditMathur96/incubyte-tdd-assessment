@@ -48,7 +48,7 @@ export default class Sum{
 
         //console.log("delimter",delimitedStr,str,seperators);
 
-        const delimiter = delimitedStr[2] || ",";
+      //  const delimiter = delimitedStr[2] || ",";
         //.log("",delimiter);
         return str.split(new RegExp(seperators.map(s => s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')).join("|"), "g"))
         .map((s)=>Number(s));

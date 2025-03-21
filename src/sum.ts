@@ -2,7 +2,7 @@ export default class Sum{
     constructor(){};
 
     senatizeInput(input:string){
-        return input.
+        return input.replace(/\/n/g, ",").
         split(",")
         .map((s)=>Number(s));
     }

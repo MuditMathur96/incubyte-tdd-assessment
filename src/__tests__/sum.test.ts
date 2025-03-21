@@ -37,5 +37,10 @@ describe("Test sum function",()=>{
       
     });
 
+
+    test("test with delimiter be of any length",()=>{
+        expect(obj.add("//[***]\n1***2***3")).toBe(6);
+    })
+
    
 })

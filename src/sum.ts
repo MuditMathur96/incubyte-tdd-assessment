@@ -18,7 +18,7 @@ export default class Sum{
 
         });
 
-        console.log(message);
+        
         if(hasNegNum) throw new Error(message);
     }
 
@@ -26,17 +26,31 @@ export default class Sum{
         
         let str:String=""
         let delimitedStr =""
+        let seperators = [",","\n"];
         if(input[0] === "/" && input[1] === "/"){
              [delimitedStr,str] = input.split("\n");
+             const customSeparatorMatch = input.match(/^\/\/(\[.*\])\n/);
+             if(customSeparatorMatch){
+                 console.log("custom match:",customSeparatorMatch![1]);   
+                 seperators = customSeparatorMatch[1]
+                 .match(/\[.*?\]/g)?.map(s => s.slice(1, -1)) || [customSeparatorMatch[1]];
+               input = input.slice(customSeparatorMatch[0].length); // Remove delimiter definition
+              
+             }else{
+                seperators = [delimitedStr[2]];
+             }
+             console.log(seperators);
+             
         }else{
              [delimitedStr,str] = [",",input.replace(/\/n/g, ",")];
+             
         }
 
-        console.log(delimitedStr,str);
+        //console.log("delimter",delimitedStr,str,seperators);
 
         const delimiter = delimitedStr[2] || ",";
-        console.log(delimiter);
-        return str.split(delimiter)
+        //.log("",delimiter);
+        return str.split(new RegExp(seperators.map(s => s.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')).join("|"), "g"))
         .map((s)=>Number(s));
     }
 
@@ -52,3 +66,4 @@ export default class Sum{
 
 
 }
+
